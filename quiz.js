@@ -1,25 +1,17 @@
-function checkAnswer(selectedValue, correctValue) {
-    if (selectedValue === correctValue) {
+function checkAnswer() {
+    const correctAnswer = "4"; // The correct answer for the quiz
+    const userAnswer = document.querySelector('input[name="quiz"]:checked')?.value;
 
-        document.getElementById("feedback").innerHTML = "Correct! Well done.";
+    if (userAnswer === correctAnswer) {
+        document.getElementById("feedback").textContent = "Correct! Well done.";
         document.getElementById("feedback").style.color = "green";
     } else {
-        document.getElementById("feedback").innerHTML = "That's incorrect. Try again!.";
+        document.getElementById("feedback").textContent = "That's incorrect. Try again!";
         document.getElementById("feedback").style.color = "red";
     }
 }
 
-document.getElementById("submit-answer").addEventListener("click", function() {
-    const correctAnswer = "4"; // The correct answer for the quiz
-    const userAnswer = document.querySelector('input[name="quiz"]:checked')?.value;
-
-    if (userAnswer) {
-        checkAnswer(userAnswer, correctAnswer);
-    } else {
-        document.getElementById("feedback").innerHTML = "Please select an answer.";
-        document.getElementById("feedback").style.color = "orange";
-    }
-})
+document.getElementById("submit-answer").addEventListener("click", checkAnswer);
 
 function sum(a, b){
     return a + b
